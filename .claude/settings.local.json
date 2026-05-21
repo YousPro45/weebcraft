@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($env:PATH = [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"User\"\\); cd \"c:\\\\Users\\\\user\\\\Desktop\\\\webcraft\"; Start-Process powershell -ArgumentList \"-NoExit\", \"-Command\", \"`$env:PATH = [System.Environment]::GetEnvironmentVariable\\('PATH','Machine'\\) + ';' + [System.Environment]::GetEnvironmentVariable\\('PATH','User'\\); cd 'c:\\\\Users\\\\user\\\\Desktop\\\\webcraft'; `$env:NEXT_PUBLIC_SUPABASE_URL='https://placeholder.supabase.co'; `$env:NEXT_PUBLIC_SUPABASE_ANON_KEY='placeholder'; npx next dev\" -WindowStyle Normal; echo \"Dev server starting in new window on http://localhost:3000\")"
+    ]
+  }
+}

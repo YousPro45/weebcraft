@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1A3A6B;
+  --color-primary-dark: #0D1F3C;
+  --color-primary-mid: #2255A4;
+  --color-accent: #1E90D4;
+  --color-accent-light: #4FB3E8;
+  --color-bg-alt: #EAF2FA;
+  --color-text-primary: #0D1F3C;
+  --color-text-muted: #5A738A;
+  --font-sans: "Varela Round", ui-sans-serif, system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background-color: #ffffff;
+  color: #0D1F3C;
+  overflow-x: hidden;
+}
+
+.btn-primary {
+  background-color: #1A3A6B;
+  color: #ffffff;
+  border-radius: 50px;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary:hover {
+  background-color: #2255A4;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(26,58,107,0.35);
+}
+
+.btn-accent {
+  background-color: #1E90D4;
+  color: #ffffff;
+  border-radius: 50px;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border: none;
+}
+.btn-accent:hover {
+  background-color: #4FB3E8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(30,144,212,0.35);
+}
+
+.btn-outline-white {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid rgba(255,255,255,0.6);
+  border-radius: 50px;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.btn-outline-white:hover {
+  background-color: rgba(255,255,255,0.15);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.glass-card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 16px;
+}
+
+.property-card {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(13,31,60,0.08);
+  transition: all 0.3s ease;
+}
+.property-card:hover {
+  box-shadow: 0 12px 40px rgba(13,31,60,0.18);
+  transform: translateY(-6px);
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #EAF2FA; }
+::-webkit-scrollbar-thumb { background: #1A3A6B; border-radius: 3px; }

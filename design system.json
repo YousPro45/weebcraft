@@ -1,0 +1,27 @@
+{
+  "colors": {
+    "primary":     "#1A3A6B",
+    "primaryDark": "#0D1F3C",
+    "primaryMid":  "#2255A4",
+    "accent":      "#1E90D4",
+    "accentLight": "#4FB3E8",
+    "background":  "#FFFFFF",
+    "backgroundAlt":"#EAF2FA",
+    "textPrimary": "#0D1F3C",
+    "textMuted":   "#5A738A"
+  },
+  "components": {
+    "buttonPrimary":   { "bg": "#1A3A6B", "text": "#FFFFFF", "radius": "50px" },
+    "buttonAccent":    { "bg": "#1E90D4", "text": "#FFFFFF", "radius": "50px" },
+    "buttonOutline":   { "bg": "transparent", "border": "#1A3A6B", "radius": "50px" },
+    "navbar":          { "bg": "#0D1F3C", "text": "#FFFFFF" },
+    "heroSection":     { "bg": "#0D1F3C→#1A3A6B", "text": "#FFFFFF" },
+    "serviceCard":     { "bg": "#FFFFFF", "iconBg": "#EAF2FA" },
+    "statBox":         { "bg": "#EAF2FA", "text": "#1A3A6B" }
+  },
+  "typography": {
+    "heading": "Varela Round",
+    "body":    "Varela Round",
+    "sizes":   { "h1": "48px", "h2": "36px", "body": "18px" }
+  }
+}
