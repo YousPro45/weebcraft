@@ -1,17 +1,10 @@
-"use client";
+// Server Component — can export route segment config
+// force-dynamic cascades to ALL child pages under /admin/*
+// This prevents build-time static prerendering which fails without Vercel env vars
+export const dynamic = "force-dynamic";
 
-import { useState } from "react";
-import Sidebar from "@/components/admin/Sidebar";
+import AdminShell from "@/components/admin/AdminShell";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const [collapsed, setCollapsed] = useState(false);
-
-  return (
-    <div className="flex min-h-screen bg-[#F4F7FB] font-[var(--font-sans)]">
-      <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
-      <div className="flex-1 flex flex-col min-w-0 overflow-auto">
-        {children}
-      </div>
-    </div>
-  );
+  return <AdminShell>{children}</AdminShell>;
 }
