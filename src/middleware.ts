@@ -1,41 +1,27 @@
-import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import { verifyToken, ADMIN_COOKIE } from "@/lib/admin-auth";
 
-export async function proxy(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  if (!pathname.startsWith("/admin") || pathname.startsWith("/admin/login")) {
+  // Only guard /admin routes; let /admin/login and API routes through
+  if (
+    !pathname.startsWith("/admin") ||
+    pathname.startsWith("/admin/login") ||
+    pathname.startsWith("/api/admin")
+  ) {
     return NextResponse.next();
   }
 
-  let supabaseResponse = NextResponse.next({ request });
+  const token = request.cookies.get(ADMIN_COOKIE)?.value ?? "";
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        getAll() { return request.cookies.getAll(); },
-        setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
-          supabaseResponse = NextResponse.next({ request });
-          cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options)
-          );
-        },
-      },
-    }
-  );
-
-  const { data: { user } } = await supabase.auth.getUser();
-
-  if (!user) {
+  if (!verifyToken(token)) {
     const loginUrl = request.nextUrl.clone();
     loginUrl.pathname = "/admin/login";
     return NextResponse.redirect(loginUrl);
   }
 
-  return supabaseResponse;
+  return NextResponse.next();
 }
 
 export const config = {

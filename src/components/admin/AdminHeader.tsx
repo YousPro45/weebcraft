@@ -1,6 +1,7 @@
 "use client";
 
-import { Bell } from "lucide-react";
+import { Bell, LogOut } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface AdminHeaderProps {
   title: string;
@@ -9,6 +10,14 @@ interface AdminHeaderProps {
 }
 
 export default function AdminHeader({ title, subtitle, action }: AdminHeaderProps) {
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await fetch("/api/admin/logout", { method: "POST" });
+    router.push("/admin/login");
+    router.refresh();
+  };
+
   return (
     <header className="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between sticky top-0 z-10">
       <div>
@@ -19,6 +28,13 @@ export default function AdminHeader({ title, subtitle, action }: AdminHeaderProp
         {action}
         <button className="w-9 h-9 rounded-full bg-[#EAF2FA] flex items-center justify-center text-[#1A3A6B] hover:bg-[#1A3A6B] hover:text-white transition-colors">
           <Bell size={16} />
+        </button>
+        <button
+          onClick={handleLogout}
+          title="Se déconnecter"
+          className="w-9 h-9 rounded-full bg-red-50 flex items-center justify-center text-red-500 hover:bg-red-500 hover:text-white transition-colors"
+        >
+          <LogOut size={16} />
         </button>
       </div>
     </header>
